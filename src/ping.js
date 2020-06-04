@@ -1,6 +1,6 @@
 const rp = require("request-promise");
 
-// Ping all Heroku services
+// Ping all Heroku services every 5 minutes
 const ping = () => {
   setInterval(async () => {
 
@@ -16,14 +16,19 @@ const ping = () => {
       resolveWithFullResponse: true, json: true
     });
 
+    const serviceDiscoveryResponse = await rp.get(process.env.DISCOVERY_URL, {
+      resolveWithFullResponse: true, json: true
+    });
+
     const obj = {
       auth: authServiceResponse.body,
       referral: referralServiceResponse.body,
-      config: configServiceResponse.body
+      config: configServiceResponse.body,
+      discovery: serviceDiscoveryResponse.body
     };
 
     console.log(obj);
-  });
+  }, 60 * 5 * 1000);
 };
 
 module.exports = { ping };
