@@ -4,20 +4,24 @@ const rp = require("request-promise");
 const ping = () => {
   setInterval(async () => {
 
+    const timeout = 240000;
+
+    console.log("Now pinging Heroku dynos");
+
     const configServiceResponse = await rp.get(process.env.CONFIG_URL, {
-      resolveWithFullResponse: true, json: true
+      resolveWithFullResponse: true, json: true, timeout
     });
 
     const serviceDiscoveryResponse = await rp.get(process.env.DISCOVERY_URL, {
-      resolveWithFullResponse: true, json: true
+      resolveWithFullResponse: true, json: true, timeout
     });
 
     const authServiceResponse = await rp.get(process.env.AUTH_URL, {
-      resolveWithFullResponse: true, json: true
+      resolveWithFullResponse: true, json: true, timeout
     });
 
     const referralServiceResponse = await rp.get(process.env.REFERRAL_URL, {
-      resolveWithFullResponse: true, json: true
+      resolveWithFullResponse: true, json: true, timeout
     });
 
     const obj = {
