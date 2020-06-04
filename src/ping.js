@@ -26,11 +26,16 @@ const ping = () => {
       resolveWithFullResponse: true, json: true, timeout
     });
 
+    const gatewayResponse = await rp.get(process.env.GATEWAY_URL, {
+      resolveWithFullResponse: true, json: true, timeout
+    });
+
     const obj = {
       auth: authServiceResponse.body,
       referral: referralServiceResponse.body,
       config: configServiceResponse.body,
-      discovery: serviceDiscoveryResponse.body
+      discovery: serviceDiscoveryResponse.body,
+      gateway: gatewayResponse.body
     };
 
     console.log(obj);
