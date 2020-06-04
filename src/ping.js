@@ -4,19 +4,19 @@ const rp = require("request-promise");
 const ping = () => {
   setInterval(async () => {
 
-    const authServiceResponse = await rp.get(process.env.AUTH_URL, {
-      resolveWithFullResponse: true, json: true
-    });
-
-    const referralServiceResponse = await rp.get(process.env.REFERRAL_URL, {
-      resolveWithFullResponse: true, json: true
-    });
-
     const configServiceResponse = await rp.get(process.env.CONFIG_URL, {
       resolveWithFullResponse: true, json: true
     });
 
     const serviceDiscoveryResponse = await rp.get(process.env.DISCOVERY_URL, {
+      resolveWithFullResponse: true, json: true
+    });
+
+    const authServiceResponse = await rp.get(process.env.AUTH_URL, {
+      resolveWithFullResponse: true, json: true
+    });
+
+    const referralServiceResponse = await rp.get(process.env.REFERRAL_URL, {
       resolveWithFullResponse: true, json: true
     });
 
