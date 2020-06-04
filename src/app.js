@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 
 app.use("/", router);
 
-app.listen(process.env.PORT, async () => {
+app.listen(process.env.PORT, () => {
   console.log("Server running");
   pinger.ping();
 });

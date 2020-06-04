@@ -2,6 +2,8 @@ const rp = require("request-promise");
 
 // Ping all Heroku services every 5 minutes
 const ping = () => {
+  console.log("Within ping method...");
+  
   setInterval(async () => {
 
     const timeout = 240000;
